@@ -199,6 +199,14 @@ public class BytecodeViewer {
 	}
 	
 	/**
+	 * Returns the wrapped JEB Decompiler instance.
+	 * @return The wrapped JEB Decompiler instance
+	 */
+	public static Decompiler getJEBDecompiler() {
+		return Decompiler.jeb;
+	}
+	
+	/**
 	 * Returns the wrapped Procyon Decompiler instance.
 	 * @return The wrapped Procyon Decompiler instance
 	 */

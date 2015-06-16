@@ -113,8 +113,10 @@ public class Settings {
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "6", false);
 			 else if(BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1Krakatau.getModel()))
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "7", false);
-			 else if(BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1KrakatauEditable.getModel()))
+			 else if(BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1jeb.getModel()))
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "8", false);
+			 else if(BytecodeViewer.viewer.panelGroup1.isSelected(BytecodeViewer.viewer.panel1KrakatauEditable.getModel()))
+				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "9", false);
 			   
 			 if(BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2None.getModel()))
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "0", false);
@@ -132,8 +134,10 @@ public class Settings {
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "6", false);
 			 else if(BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2Krakatau.getModel()))
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "7", false);
-			 else if(BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2KrakatauEditable.getModel()))
+			 else if(BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2jeb.getModel()))
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "8", false);
+			 else if(BytecodeViewer.viewer.panelGroup2.isSelected(BytecodeViewer.viewer.panel2KrakatauEditable.getModel()))
+				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "9", false);
 			 
 			 if(BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3None.getModel()))
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "0", false);
@@ -151,8 +155,10 @@ public class Settings {
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "6", false);
 			 else if(BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3Krakatau.getModel()))
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "7", false);
-			 else if(BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3KrakatauEditable.getModel()))
+			 else if(BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3jeb.getModel()))
 				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "8", false);
+			 else if(BytecodeViewer.viewer.panelGroup3.isSelected(BytecodeViewer.viewer.panel3KrakatauEditable.getModel()))
+				 DiskWriter.writeNewLine(BytecodeViewer.settingsName, "9", false);
 			 
 			DiskWriter.writeNewLine(BytecodeViewer.settingsName, String.valueOf(BytecodeViewer.viewer.refreshOnChange.isSelected()), false);
 			DiskWriter.writeNewLine(BytecodeViewer.settingsName, String.valueOf(BytecodeViewer.viewer.isMaximized), false);

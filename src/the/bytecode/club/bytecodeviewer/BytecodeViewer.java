@@ -31,6 +31,8 @@ import org.apache.commons.io.FileUtils;
 import org.objectweb.asm.tree.ClassNode;
 
 import the.bytecode.club.bytecodeviewer.api.ClassNodeLoader;
+import the.bytecode.club.bytecodeviewer.decompilers.JEBDecompiler;
+import the.bytecode.club.bytecodeviewer.decompilers.KrakatauDecompiler;
 import the.bytecode.club.bytecodeviewer.gui.ClassViewer;
 import the.bytecode.club.bytecodeviewer.gui.FileNavigationPane;
 import the.bytecode.club.bytecodeviewer.gui.MainViewerGUI;
@@ -131,6 +133,7 @@ public class BytecodeViewer {
 	private static long start = System.currentTimeMillis();
 	public static String lastDirectory = "";
 	public static ArrayList<Process> krakatau = new ArrayList<Process>();
+	public static ArrayList<Process> jebproc = new ArrayList<Process>();
 	public static Refactorer refactorer = new Refactorer();
 	
 	/**
@@ -323,8 +326,12 @@ public class BytecodeViewer {
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			@Override
 			public void run() {
-				for(Process krakatau : krakatau)
+				for(Process krakatau : BytecodeViewer.krakatau)
 					krakatau.destroy();
+				
+				for(Process jebproc : BytecodeViewer.jebproc)
+					jebproc.destroy();
+				
 				Settings.saveGUI();
 				cleanup();
 			}
@@ -619,6 +626,9 @@ public class BytecodeViewer {
 									byte[] bytes = JarUtils.getBytes(new FileInputStream(f));
 									BytecodeViewer.loadedResources.put(f.getName(), bytes);
 								}
+								if(JEBDecompiler.tempDex != null)
+									JEBDecompiler.tempDex = null;
+								
 							}
 						}
 					}

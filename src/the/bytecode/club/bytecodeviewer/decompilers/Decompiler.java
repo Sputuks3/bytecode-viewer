@@ -24,6 +24,7 @@ public abstract class Decompiler {
 	public static Decompiler procyon = new ProcyonDecompiler();
 	public static Decompiler cfr = new CFRDecompiler();
 	public static Decompiler krakatau = new KrakatauDecompiler();
+	public static Decompiler jeb = new JEBDecompiler();
 	public static Decompiler krakatauDA = new KrakatauDisassembler();
 	public static Decompiler smali = new SmaliDisassembler();
 }

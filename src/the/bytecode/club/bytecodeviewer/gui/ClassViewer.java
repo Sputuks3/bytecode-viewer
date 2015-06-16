@@ -468,8 +468,11 @@ public class ClassViewer extends Viewer {
 				.isSelected(BytecodeViewer.viewer.panel1Krakatau.getModel()))
 			pane1 = 7;
 		else if (BytecodeViewer.viewer.panelGroup1
-				.isSelected(BytecodeViewer.viewer.panel1KrakatauEditable.getModel()))
+				.isSelected(BytecodeViewer.viewer.panel1jeb.getModel()))
 			pane1 = 8;
+		else if (BytecodeViewer.viewer.panelGroup1
+				.isSelected(BytecodeViewer.viewer.panel1KrakatauEditable.getModel()))
+			pane1 = 9;
 
 		if (BytecodeViewer.viewer.panelGroup2
 				.isSelected(BytecodeViewer.viewer.panel2None.getModel()))
@@ -496,8 +499,11 @@ public class ClassViewer extends Viewer {
 				.isSelected(BytecodeViewer.viewer.panel2Krakatau.getModel()))
 			pane2 = 7;
 		else if (BytecodeViewer.viewer.panelGroup2
-				.isSelected(BytecodeViewer.viewer.panel2KrakatauEditable.getModel()))
+				.isSelected(BytecodeViewer.viewer.panel2jeb.getModel()))
 			pane2 = 8;
+		else if (BytecodeViewer.viewer.panelGroup2
+				.isSelected(BytecodeViewer.viewer.panel1KrakatauEditable.getModel()))
+			pane2 = 9;
 
 		if (BytecodeViewer.viewer.panelGroup3
 				.isSelected(BytecodeViewer.viewer.panel3None.getModel()))
@@ -524,8 +530,11 @@ public class ClassViewer extends Viewer {
 				.isSelected(BytecodeViewer.viewer.panel3Krakatau.getModel()))
 			pane3 = 7;
 		else if (BytecodeViewer.viewer.panelGroup3
-				.isSelected(BytecodeViewer.viewer.panel3KrakatauEditable.getModel()))
+				.isSelected(BytecodeViewer.viewer.panel3jeb.getModel()))
 			pane3 = 8;
+		else if (BytecodeViewer.viewer.panelGroup3
+				.isSelected(BytecodeViewer.viewer.panel1KrakatauEditable.getModel()))
+			pane3 = 9;
 
 		panel1.removeAll();
 		panel2.removeAll();
@@ -718,9 +727,33 @@ public class ClassViewer extends Viewer {
 						java1 = panelArea;
 					}
 
+					if (pane1 == 8) {// JEB
+						RSyntaxTextArea panelArea = new RSyntaxTextArea();
+						panelArea
+						.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+						panelArea.setCodeFoldingEnabled(true);
+						panelArea.setAntiAliasingEnabled(true);
+						RTextScrollPane scrollPane = new RTextScrollPane(
+								panelArea);
+						panelArea.setText(Decompiler.jeb.decompileClassNode(cn,b));
+						panelArea.setCaretPosition(0);
+						panelArea.setEditable(BytecodeViewer.viewer.pane1Editable.isSelected());
+						panelArea.addKeyListener(new KeyListener() {  
+							public void keyPressed(KeyEvent e) {  
+								if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+									field1.requestFocus();
+								}
 
+								BytecodeViewer.checkHotKey(e);
+							}
+							@Override public void keyReleased(KeyEvent arg0) { }
+							@Override public void keyTyped(KeyEvent arg0) { }  
+						});
+						panel1.add(scrollPane);
+						java1 = panelArea;
+					}
 
-					if (pane1 == 8) {// kraktau bytecode
+					if (pane1 == 9) {// kraktau bytecode
 						RSyntaxTextArea panelArea = new RSyntaxTextArea();
 						panelArea
 						.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
@@ -915,8 +948,34 @@ public class ClassViewer extends Viewer {
 						panel2.add(scrollPane);
 						java2 = panelArea;
 					}
+					
+					if (pane2 == 8) {// JEB
+						RSyntaxTextArea panelArea = new RSyntaxTextArea();
+						panelArea
+						.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+						panelArea.setCodeFoldingEnabled(true);
+						panelArea.setAntiAliasingEnabled(true);
+						RTextScrollPane scrollPane = new RTextScrollPane(
+								panelArea);
+						panelArea.setText(Decompiler.jeb.decompileClassNode(cn,b));
+						panelArea.setCaretPosition(0);
+						panelArea.setEditable(BytecodeViewer.viewer.pane2Editable.isSelected());
+						krakatau2 = panelArea;
+						krakatau2.addKeyListener(new KeyListener() {  
+							public void keyPressed(KeyEvent e) {  
+								if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+									field2.requestFocus();
+								}
 
-					if (pane2 == 8) {// kraktau bytecode
+								BytecodeViewer.checkHotKey(e);
+							}
+							@Override public void keyReleased(KeyEvent arg0) { }
+							@Override public void keyTyped(KeyEvent arg0) { }  
+						});
+						panel2.add(scrollPane);
+					}
+
+					if (pane2 == 9) {// kraktau bytecode
 						RSyntaxTextArea panelArea = new RSyntaxTextArea();
 						panelArea
 						.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
@@ -1113,9 +1172,33 @@ public class ClassViewer extends Viewer {
 						java3 = panelArea;
 					}
 
+					if (pane3 == 8) {// JEB
+						RSyntaxTextArea panelArea = new RSyntaxTextArea();
+						panelArea
+						.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+						panelArea.setCodeFoldingEnabled(true);
+						panelArea.setAntiAliasingEnabled(true);
+						RTextScrollPane scrollPane = new RTextScrollPane(
+								panelArea);
+						panelArea.setText(Decompiler.jeb.decompileClassNode(cn,b));
+						panelArea.setCaretPosition(0);
+						panelArea.setEditable(BytecodeViewer.viewer.pane3Editable.isSelected());
+						krakatau3 = panelArea;
+						krakatau3.addKeyListener(new KeyListener() {  
+							public void keyPressed(KeyEvent e) {  
+								if ((e.getKeyCode() == KeyEvent.VK_F) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+									field3.requestFocus();
+								}
 
+								BytecodeViewer.checkHotKey(e);
+							}
+							@Override public void keyReleased(KeyEvent arg0) { }
+							@Override public void keyTyped(KeyEvent arg0) { }  
+						});
+						panel3.add(scrollPane);
+					}
 
-					if (pane3 == 8) {// kraktau bytecode
+					if (pane3 == 9) {// kraktau bytecode
 						RSyntaxTextArea panelArea = new RSyntaxTextArea();
 						panelArea
 						.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
