@@ -23,11 +23,10 @@ import the.bytecode.club.bytecodeviewer.MiscUtils;
 import the.bytecode.club.bytecodeviewer.ZipUtils;
 
 public class JEBDecompiler extends Decompiler {
-	private static File launchDir = new File (".");
 	//base path to JEB, change to suit your environment
 	private static String sDrv = System.getenv("SystemDrive");
 	//full location to JEB jar executable
-	private static String jebloc =  JEBDecompiler.getBCVDir() + BytecodeViewer.fs + "jeb-1.5.201404100" + BytecodeViewer.fs + "bin" + BytecodeViewer.fs + "jeb.jar";
+	private static String jebloc = sDrv + BytecodeViewer.fs + "jeb-1.5.201404100" + BytecodeViewer.fs + "bin" + BytecodeViewer.fs + "jeb.jar";
 	//specify location to custom jre to use here, can set to older or newer
 	private static String jre = sDrv+ BytecodeViewer.fs + "Java" +BytecodeViewer.fs+ "jdk1.7.0_21"+BytecodeViewer.fs+"bin"+BytecodeViewer.fs+"java.exe";
 	//script file name and contents
@@ -36,17 +35,9 @@ public class JEBDecompiler extends Decompiler {
 	
 	public static File tempDex = null; 
 
-	private static String getBCVDir() {
-		try {
-			return launchDir.getCanonicalPath();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return launchDir.toString();
-	}
 	@Override
-	public String decompileClassNode(ClassNode cn, byte[] b) {		
+	public String decompileClassNode(ClassNode cn, byte[] b) {
+		//JOptionPane.showMessageDialog(null, "Method Start");
 		String s = "Bytecode Viewer Version: " + BytecodeViewer.version + BytecodeViewer.nl + BytecodeViewer.nl + "Please send this to konloch@gmail.com. " + BytecodeViewer.nl + BytecodeViewer.nl;
 		String jebScriptName = "";	//change JEB Script name here
 
